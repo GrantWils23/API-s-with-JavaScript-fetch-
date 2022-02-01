@@ -11,10 +11,15 @@
 
     <script>
         fetch("https://ci-swapi.herokuapp.com/api/")
-        .then(Response => Response.json())
-        .then(data => {
-            document.getElementById("content").innerText = data.people;
-        })
+            .then(Response => Response.text())
+            .then(data => displayData(data))
+            .catch((e) => {
+                console.error("Error: ", e);
+            }); 
+        function displayData(data) {
+            document.getElementById("content").innerText = data;
+        }
     </script>
 </body>
 </html>
+
